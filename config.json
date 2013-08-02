@@ -1,0 +1,49 @@
+{
+    "name" : "mpocket",
+    "mode": "debug",
+    "debugLevel": 1,
+    "eliminate": false,
+    "minify": false,
+    "preloadImages": false,
+    "proxies": [
+        {
+            "baseUrl": "http://jsfiddle.net",
+            "proxyAlias": "jsfiddle"
+        },
+        {
+            "baseUrl": "http://your.server2.com",
+            "proxyAlias": "myServer2"
+        }
+    ],        
+    "libraries":[
+        {
+            "name": "scrollz",
+            "refs": ["jquery.scrollz.min.js"]
+        },
+        {
+            "name": "phonegap",
+            "refs": ["cordova.android-2.5.0.js", "cordova.utils.js"]
+        }
+    ],
+            
+    "htmlHeader": [
+        "<meta charset=\"utf-8\">",
+        "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">",
+        "<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"default\">",
+        "<link rel=\"apple-touch-icon\" href=\"theme/images/Icon-72.png\" />",
+        "<link rel=\"apple-touch-icon\" href=\"theme/images/Icon.png\" />",
+        "<link rel=\"apple-touch-icon\" href=\"theme/images/Icon@2x.png\" />",
+        "<link rel=\"stylesheet\" href=\"theme/jquery.scrollz.css\" type=\"text/css\">"
+    ],
+    
+    "application": {
+        "version": "0.0.1",
+        "debugMode": true,
+        "useTransitions": true,
+        "keyPrefix": "#m#",
+        "keySuffix": "_",
+        "timeStampCreated": "created_at",
+        "timeStampUpdated": "updated_at",
+        "m_id": "m_id"
+    }
+}

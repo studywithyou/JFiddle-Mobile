@@ -1,0 +1,32 @@
+@startuml
+
+title <size:20>mpocket\n\n
+
+box "Controllers\n" #LightBlue
+participant "<b>MyController</b>" as MyController << M.Controller >>
+end box
+box "Views\n" #LightBlue
+    participant "<b>app</b>" as app << M.Application >>
+    participant "<b>home</b>" as  home << M.PageView >>
+    participant "<b>jsfiddle_list_view_template</b>" as  jsfiddle_list_view_template << M.ListItemView >>
+    participant "<b>preview</b>" as  preview << M.PageView >>
+end box
+
+
+app -> home: render
+
+home -> MyController: init
+MyController -> MyController : loadJSFiddle
+create jsfiddle_list_view_template
+home -> jsfiddle_list_view_template: render
+
+group tap event on item's list
+jsfiddle_list_view_template -> MyController: showActionSheet
+alt preview
+MyController -> preview: render
+else download
+MyController -> Phonegap: download
+end
+end
+
+@enduml
