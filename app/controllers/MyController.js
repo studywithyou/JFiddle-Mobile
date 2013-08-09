@@ -164,46 +164,50 @@ mpocket.MyController = M.Controller.extend({
         }
     },
     showActionSheet: function( domId, itemId) {
+        window.setTimeout( function() {
+            this._showActionSheet( domId, itemId );
+        }, 200 );
+            
+    },
+    _showActionSheet: function( domId, itemId) {
         var self = this;
         
-        window.setTimeout( function() {
-            M.DialogView.actionSheet({
-                title: 'Fiddle Action',
-                //destructiveButtonValue: 'Crunch Time!',
-                cancelButtonValue: 'Cancel',
-                otherButtonValues:[ 'Preview', 'Download'],
-                otherButtonTags: ['preview', 'download'],
-                callbacks: {
-                    destruction: {
-                        target: null,
-                        action: null
-                    },
-                    cancel: {
-                        target: null,
-                        action: null
-                    },
-                    other: {
-                        target: null,
-                        action: function(tag) {
-                            var url = self.listObject[ itemId ].url;
-                            var title = self.listObject[ itemId ].title;
+        M.DialogView.actionSheet({
+            title: 'Fiddle Action',
+            //destructiveButtonValue: 'Crunch Time!',
+            cancelButtonValue: 'Cancel',
+            otherButtonValues:[ 'Preview', 'Download'],
+            otherButtonTags: ['preview', 'download'],
+            callbacks: {
+                destruction: {
+                    target: null,
+                    action: null
+                },
+                cancel: {
+                    target: null,
+                    action: null
+                },
+                other: {
+                    target: null,
+                    action: function(tag) {
+                        var url = self.listObject[ itemId ].url;
+                        var title = self.listObject[ itemId ].title;
 
-                            self.set( "url", url + "show" );
+                        self.set( "url", url + "show" );
 
-                            switch(tag) {
-                                case 'preview':
-                                    self.switchToPreview(domId,itemId);
-                                break;    
-                                case 'download':                              
-                                    self.native_download( title );
-                                break;
-                                default:
-                            }
+                        switch(tag) {
+                            case 'preview':
+                                self.switchToPreview(domId,itemId);
+                            break;    
+                            case 'download':                              
+                                self.native_download( title );
+                            break;
+                            default:
                         }
                     }
                 }
-            }); 
-        }, 200 );
+            }
+        }); 
     },
     native_download: function( name ) {
         if( !M.Environment.phonegap ) {
