@@ -22,7 +22,7 @@
         },
         {
             "name": "phonegap",
-            "refs": ["cordova.android-2.5.0.js", "cordova.utils.js"]
+            "refs": ["cordova.ios-2.5.0.js", "cordova.utils.js"]
         }
     ],
             

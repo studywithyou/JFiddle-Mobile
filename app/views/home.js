@@ -24,7 +24,8 @@ mpocket.home = M.PageView.design({
         }
         
     },
-    childViews: isMobile.Android() ? 'content' : 'header content',
+    //childViews: isMobile.Android() ? 'content' : 'header content',
+    childViews: 'content',
     
     header: M.ToolbarView.design({
         //value: 'Fiddle(s)',
